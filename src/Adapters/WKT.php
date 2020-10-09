@@ -39,7 +39,7 @@ class WKT extends GeoAdapter
 
     // If geos is installed, then we take a shortcut and let it parse the WKT
     if (GeoPHP::geosInstalled()) {
-      $reader = new GEOSWKTReader();
+      $reader = new \GEOSWKTReader();
       if ($srid) {
         $geom = GeoPHP::geosToGeometry($reader->read($wkt));
         $geom->setSRID($srid);
@@ -254,7 +254,7 @@ class WKT extends GeoAdapter
 
     // If geos is installed, then we take a shortcut and let it write the WKT
     if (GeoPHP::geosInstalled()) {
-      $writer = new GEOSWKTWriter();
+      $writer = new \GEOSWKTWriter();
       $writer->setTrim(true);
       return $writer->write($geometry->geos());
     }
